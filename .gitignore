@@ -1,0 +1,5 @@
+.netrwhist
+.DS_Store
+*.swp
+init.vim
+nvim
