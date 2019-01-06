@@ -3,8 +3,8 @@
 ## Setup
 
 ```bash
-git clone https://github.com/cblanc/.vim
-make
+git clone https://github.com/cblanc/.vim.git ~/.vim
+cd ~/.vim && make
 ```
 
 ## Update
@@ -13,7 +13,7 @@ make
 make update
 ```
 
-## Adding a submodule
+## Add Submodule
 
 ```bash
 git submodule add git@github.com:author/module bundle/module
