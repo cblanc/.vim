@@ -16,7 +16,7 @@ make update
 ## Add Submodule
 
 ```bash
-git submodule add git@github.com:author/module bundle/module
+git submodule add https://github.com/<author>/<module>.git bundle/<module>
 ```
 
 ### Notes
