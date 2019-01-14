@@ -98,3 +98,6 @@ let g:jsdoc_underscore_private=1
 " Map jsdoc to ctrl-m
 nmap <silent> <C-m> <Plug>(jsdoc)
 
+" Creates a persistent undofile
+set undofile
+set undodir=~/.vim/undodir
