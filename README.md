@@ -4,7 +4,7 @@
 
 ```bash
 git clone https://github.com/cblanc/.vim.git ~/.vim
-cd ~/.vim && make
+cd ~/.vim && make init
 ```
 
 ## Update
