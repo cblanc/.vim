@@ -79,7 +79,7 @@ let g:javascript_plugin_jsdoc = 1
 " NerdTree
 map <C-o> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
-let NERDTreeIgnore = ['.DS_Store', '.git', 'node_modules', '.nyc_output', '.cache']
+let NERDTreeIgnore = ['.DS_Store', '.git', 'node_modules', '.nyc_output', '.cache', 'docs', 'coverage', 'dist']
 
 " GitGutter
 set updatetime=500
