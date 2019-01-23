@@ -79,13 +79,13 @@ let g:javascript_plugin_jsdoc = 1
 " NerdTree
 map <C-o> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
-let NERDTreeIgnore = ['.DS_Store', '.git', 'node_modules', '.nyc_output']
+let NERDTreeIgnore = ['.DS_Store', '.git', 'node_modules', '.nyc_output', '.cache']
 
 " GitGutter
 set updatetime=500
 
 " CtrlP
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|tmp'
+let g:ctrlp_custom_ignore = '^\.?(node_modules|DS_Store|git|tmp|nyc_output|cache)'
 let g:ctrlp_show_hidden = 1
 
 " Use ag with ack.vim
