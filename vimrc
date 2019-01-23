@@ -85,7 +85,7 @@ let NERDTreeIgnore = ['.DS_Store', '.git', 'node_modules', '.nyc_output', '.cach
 set updatetime=500
 
 " CtrlP
-let g:ctrlp_custom_ignore = 'node_modules\|\.DS_Store\|\.git\|\.?tmp\|.nyc_output\|.cache\|dist'
+let g:ctrlp_custom_ignore = 'node_modules/\|\.DS_Store\|\.git/\|\.?tmp/\|.nyc_output/\|.cache/\|dist/\|docs/\|coverage/'
 let g:ctrlp_show_hidden = 1
 
 " Use ag with ack.vim
