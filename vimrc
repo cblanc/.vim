@@ -101,3 +101,5 @@ nmap <silent> <C-m> <Plug>(jsdoc)
 " Creates a persistent undofile
 set undofile
 set undodir=~/.vim/undodir
+
+map <Leader>r :! chrome-cli reload<CR><CR>
