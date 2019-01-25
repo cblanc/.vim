@@ -44,20 +44,22 @@ init: ## Sets up symlink for user and root .vimrc for vim and neovim.
 	mkdir -p "$(HOME_CONFIG)" 
 	ln -snf "$(HOME)/.vim" "$(HOME_CONFIG)/nvim"
 	ln -snf "$(HOME)/.vimrc" "$(HOME_CONFIG)/nvim/init.vim"
-	make update
+	make plugins-init
 
-## Update settings repo and submodules
+## Updates .vim settings and plugins from cblanc/.vim
 .PHONY: update
-update: update-repo update-submodules
+update: 
+	git fetch
+	git merge --ff-only origin/master
 
-## Updates from cblanc/.vim
-.PHONY: update-repo
-update-repo: 
-	git pull origin master
-
-## Update submodules
-.PHONY: update-submodules
-update-submodules: ## Updates git submodules
-	git submodule update --init --recursive
+## Update vim plugins
+.PHONY: plugins-update
+plugins-update: ## Updates git submodules
 	git submodule foreach git pull --recurse-submodules origin master
+
+## Download vim plugins
+.PHONY: plugins-init
+plugins-init:
+	git submodule init
+	git submodule update --recursive --jobs=8
 
