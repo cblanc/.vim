@@ -2,6 +2,34 @@
 
 HOME_CONFIG := $(HOME)/.config
 
+## Setup vim on system
+.PHONY: init
+init: ## Sets up symlink for user and root .vimrc for vim and neovim.
+	ln -snf "$(HOME)/.vim/vimrc" "$(HOME)/.vimrc" # Copy vimrc
+	mkdir -p "$(HOME_CONFIG)" 
+	ln -snf "$(HOME)/.vim" "$(HOME_CONFIG)/nvim"
+	ln -snf "$(HOME)/.vimrc" "$(HOME_CONFIG)/nvim/init.vim"
+	make plugins-init
+
+## Updates .vim settings and plugins from cblanc/.vim
+.PHONY: update
+update: 
+	git fetch
+	git merge --ff-only origin/master
+
+## Update vim plugins
+.PHONY: plugins-update
+plugins-update: ## Updates git submodules
+	git submodule foreach git pull --recurse-submodules origin master
+
+## Download vim plugins
+.PHONY: plugins-init
+plugins-init:
+	git submodule init
+	git submodule update --recursive --jobs=8
+
+## -- Misc --
+
 ## Help message
 .PHONY: help
 help:
@@ -36,28 +64,3 @@ help:
 			} \
 		}' \
 		$(MAKEFILE_LIST)
-
-## Setup vim on system
-.PHONY: init
-init: ## Sets up symlink for user and root .vimrc for vim and neovim.
-	ln -snf "$(HOME)/.vim/vimrc" "$(HOME)/.vimrc" # Copy vimrc
-	mkdir -p "$(HOME_CONFIG)" 
-	ln -snf "$(HOME)/.vim" "$(HOME_CONFIG)/nvim"
-	ln -snf "$(HOME)/.vimrc" "$(HOME_CONFIG)/nvim/init.vim"
-	make update
-
-## Update settings repo and submodules
-.PHONY: update
-update: update-repo update-submodules
-
-## Updates from cblanc/.vim
-.PHONY: update-repo
-update-repo: 
-	git pull origin master
-
-## Update submodules
-.PHONY: update-submodules
-update-submodules: ## Updates git submodules
-	git submodule update --init --recursive
-	git submodule foreach git pull --recurse-submodules origin master
-
