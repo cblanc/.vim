@@ -67,3 +67,6 @@
 [submodule "bundle/vim-endwise"]
 	path = bundle/vim-endwise
 	url = https://github.com/tpope/vim-endwise.git
+[submodule "bundle/ale"]
+	path = bundle/ale
+	url = https://github.com/w0rp/ale.git

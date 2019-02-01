@@ -103,3 +103,24 @@ set undofile
 set undodir=~/.vim/undodir
 
 map <Leader>r :! chrome-cli reload<CR><CR>
+
+" Ale configuration
+" Linter config
+let g:ale_linters = {
+\ 'javascript': ['prettier'],
+\ 'typescript': ['prettier'],
+\ 'css': ['prettier'],
+\}
+
+" Fixer config
+let g:ale_fixers = {
+\ 'javascript': ['prettier'],
+\ 'typescript': ['prettier'],
+\ 'css': ['prettier'],
+\}
+" Only run fixer on above configurations
+let g:ale_linters_explicit = 1
+
+"Attach lint information to airline
+let g:airline#extensions#ale#enabled = 1
+
