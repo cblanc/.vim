@@ -108,7 +108,7 @@ map <Leader>r :! chrome-cli reload<CR><CR>
 " Linter config
 let g:ale_linters = {
 \ 'javascript': ['prettier'],
-\ 'typescript': ['prettier'],
+\ 'typescript': ['tslint'],
 \ 'css': ['prettier'],
 \}
 
