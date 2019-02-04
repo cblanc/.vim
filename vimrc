@@ -40,6 +40,8 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+map <C-i> <C-W>r
+map <C-y> <C-W>R
 
 " No annoying sound on errors
 set noerrorbells
@@ -81,7 +83,7 @@ let g:javascript_plugin_jsdoc = 1
 " NerdTree
 map <C-o> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
-let NERDTreeIgnore = ['.DS_Store', '.git', 'node_modules', '.nyc_output', '.cache', 'docs', 'coverage', 'dist', '.capistrano']
+let NERDTreeIgnore = ['.DS_Store', '.git/', 'node_modules/', '.nyc_output/', '.cache/', 'docs/', 'coverage/', 'dist/', '.capistrano/']
 
 " GitGutter
 set updatetime=500
