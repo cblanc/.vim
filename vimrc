@@ -29,6 +29,8 @@ set wildmenu
 set wildmode=longest,list
 set foldcolumn=1
 set encoding=utf8
+set splitbelow
+set splitright
 
 " Use login shell (reads in .bash_profile)
 set shell=/bin/bash\ -l
