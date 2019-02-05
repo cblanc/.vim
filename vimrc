@@ -128,3 +128,7 @@ let g:ale_linters_explicit = 1
 "Attach lint information to airline
 let g:airline#extensions#ale#enabled = 1
 
+" Tsuquyomi (typescript completion) config
+let g:tsuquyomi_completion_detail = 1
+set completeopt=longest,menuone
+set omnifunc=tsuquyomi#complete
