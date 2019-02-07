@@ -73,17 +73,15 @@ inoremap <s-tab> <c-n>
 " STATUS LINE
 :set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 
-" InsertTime COMMAND
-" Insert the current time
-command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S.0 %z')<cr>
-
 " vim-javascript
-let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_jsdoc = 1 " Enables Syntax highlighting for JsDocs
 
 " NerdTree
 map <C-o> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['.DS_Store', '^.git$', '^node_modules$', '.nyc_output$', '.cache$', 'docs$', 'coverage$', 'dist$', '.capistrano$']
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
 
 " GitGutter
 set updatetime=500
@@ -123,7 +121,6 @@ let g:ale_fixers = {
 \ 'css': ['prettier'],
 \}
 " Only run fixer on above configurations
-let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 1
 
 "Attach lint information to airline
