@@ -111,6 +111,7 @@ map <Leader>r :! chrome-cli reload<CR><CR>
 let g:ale_linters = {
 \ 'javascript': ['prettier'],
 \ 'typescript': ['tslint'],
+\ 'json': ['prettier'],
 \ 'css': ['prettier'],
 \}
 
@@ -118,6 +119,7 @@ let g:ale_linters = {
 let g:ale_fixers = {
 \ 'javascript': ['prettier'],
 \ 'typescript': ['prettier'],
+\ 'json': ['prettier'],
 \ 'css': ['prettier'],
 \}
 " Only run fixer on above configurations
