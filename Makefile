@@ -17,18 +17,27 @@ update:
 	git fetch
 	git merge --ff-only origin/master
 
+## -- Plugin Methods --
+
 ## Update vim plugins
 .PHONY: plugins-update
-plugins-update: ## Updates git submodules
+plugins-update: ## Git pulls over every submodule in bundle
 	git submodule foreach git pull --recurse-submodules origin master
+	make compile-vimproc
 
 ## Download vim plugins
 .PHONY: plugins-init
 plugins-init:
 	git submodule init
 	git submodule update --recursive --jobs=8
+	make compile-vimproc
 
 ## -- Misc --
+
+## Compile bundle/vimproc.vim
+.PHONY: compile-vimproc
+compile-vimproc:
+	cd "${CURDIR}/bundle/vimproc.vim" && make
 
 ## Help message
 .PHONY: help
