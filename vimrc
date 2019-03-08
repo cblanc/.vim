@@ -130,5 +130,6 @@ let g:airline#extensions#ale#enabled = 1
 
 " Tsuquyomi (typescript completion) config
 let g:tsuquyomi_completion_detail = 1
+let g:tsuquyomi_definition_split = 1
 set completeopt=longest,menuone
 set omnifunc=tsuquyomi#complete
