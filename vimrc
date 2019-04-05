@@ -40,8 +40,6 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
-map <C-i> <C-W>r
-map <C-y> <C-W>R
 
 " No annoying sound on errors
 set noerrorbells
@@ -117,6 +115,7 @@ let g:ale_linters = {
 \ 'typescript': ['tslint'],
 \ 'json': ['prettier'],
 \ 'css': ['prettier'],
+\ 'ruby': ['ruby', 'rubocop'],
 \}
 
 " Fixer config
@@ -125,6 +124,7 @@ let g:ale_fixers = {
 \ 'typescript': ['prettier'],
 \ 'json': ['prettier'],
 \ 'css': ['prettier'],
+\ 'ruby': ['rubocop'],
 \}
 " Only run fixer on above configurations
 let g:ale_fix_on_save = 1
