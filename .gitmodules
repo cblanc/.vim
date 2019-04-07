@@ -64,3 +64,6 @@
 [submodule "bundle/vimproc.vim"]
 	path = bundle/vimproc.vim
 	url = https://github.com/Shougo/vimproc.vim.git
+[submodule "bundle/papercolor-theme"]
+	path = bundle/papercolor-theme
+	url = https://github.com/NLKNguyen/papercolor-theme.git
