@@ -125,6 +125,7 @@ let g:ale_fixers = {
 \}
 " Only run fixer on above configurations
 let g:ale_fix_on_save = 1
+let g:ale_lint_on_save = 1
 
 "Attach lint information to airline
 let g:airline#extensions#ale#enabled = 1
