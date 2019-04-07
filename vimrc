@@ -54,8 +54,9 @@ set backspace=indent,eol,start
 
 " Colours
 :set t_Co=256 " 256 colors
-:set background=dark
-:color monokai
+:set background=light
+color PaperColor
+" :color monokai
 
 " MULTIPURPOSE TAB KEY
 " Indent if we're at the beginning of a line. Else, do completion.
