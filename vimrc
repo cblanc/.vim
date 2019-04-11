@@ -115,6 +115,7 @@ let g:ale_linters = {
 \ 'typescript': ['tslint'],
 \ 'json': ['prettier'],
 \ 'css': ['prettier'],
+\ 'yaml': ['prettier'],
 \ 'ruby': ['ruby', 'rubocop'],
 \}
 
@@ -124,6 +125,7 @@ let g:ale_fixers = {
 \ 'typescript': ['prettier'],
 \ 'json': ['prettier'],
 \ 'css': ['prettier'],
+\ 'yaml': ['prettier'],
 \ 'ruby': ['rubocop'],
 \}
 " Only run fixer on above configurations
