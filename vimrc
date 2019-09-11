@@ -117,6 +117,7 @@ let g:ale_linters = {
 \ 'css': ['prettier'],
 \ 'yaml': ['prettier'],
 \ 'ruby': ['ruby', 'rubocop'],
+\ 'eruby': ['prettier'],
 \}
 
 " Fixer config
@@ -127,6 +128,7 @@ let g:ale_fixers = {
 \ 'css': ['prettier'],
 \ 'yaml': ['prettier'],
 \ 'ruby': ['rubocop'],
+\ 'eruby': ['prettier'],
 \}
 " Only run fixer on above configurations
 let g:ale_fix_on_save = 1
