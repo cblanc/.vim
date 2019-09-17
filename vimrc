@@ -106,8 +106,6 @@ nmap <silent> <C-m> <Plug>(jsdoc)
 set undofile
 set undodir=~/.vim/undodir
 
-map <Leader>r :! chrome-cli reload<CR><CR>
-
 " Ale configuration
 " Linter config
 let g:ale_linters = {
@@ -142,3 +140,8 @@ let g:tsuquyomi_completion_detail = 1
 let g:tsuquyomi_definition_split = 1
 set completeopt=longest,menuone
 set omnifunc=tsuquyomi#complete
+
+nnoremap <Leader>r :! chrome-cli reload<CR><CR>
+nnoremap <Leader>q :Goyo<CR><CR>
+nnoremap <Leader>w :Limelight!!<CR><CR>
+nnoremap <Leader>a gg=G''
