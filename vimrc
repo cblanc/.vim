@@ -151,6 +151,8 @@ nnoremap <Leader>t :GitGutterToggle<CR>
 
 " Second row - Editing
 nnoremap <Leader>a gg=G''
+nnoremap <Leader>s :call RunNearestSpec()<CR>
+nnoremap <Leader>S :call RunCurrentSpecFile()<CR>
 
 " Third row - git
 nnoremap <Leader>x :Gstatus<CR>
