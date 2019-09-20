@@ -141,7 +141,12 @@ let g:tsuquyomi_definition_split = 1
 set completeopt=longest,menuone
 set omnifunc=tsuquyomi#complete
 
-nnoremap <Leader>r :! chrome-cli reload<CR><CR>
-nnoremap <Leader>q :Goyo<CR><CR>
-nnoremap <Leader>w :Limelight!!<CR><CR>
+" First row - View
+nnoremap <Leader>q :Goyo<CR>
+nnoremap <Leader>w :Limelight!!<CR>
+nnoremap <Leader>e :set nu!<CR>
+nnoremap <Leader>r :set rnu!<CR>
+nnoremap <Leader>t :GitGutterToggle<CR>
+
+" Second row - Editing
 nnoremap <Leader>a gg=G''
