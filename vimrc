@@ -146,7 +146,15 @@ nnoremap <Leader>q :Goyo<CR>
 nnoremap <Leader>w :Limelight!!<CR>
 nnoremap <Leader>e :set nu!<CR>
 nnoremap <Leader>r :set rnu!<CR>
+nnoremap <Leader>R :so ~/.vimrc<CR>
 nnoremap <Leader>t :GitGutterToggle<CR>
 
 " Second row - Editing
 nnoremap <Leader>a gg=G''
+
+" Third row - git
+nnoremap <Leader>x :Gstatus<CR>
+nnoremap <Leader>c :Gcommit<CR>
+nnoremap <Leader>C :Git add --all<CR>
+nnoremap <Leader>v :Gvsplit<CR>
+nnoremap <Leader>n :Git rebase HEAD~10 -i<CR>
