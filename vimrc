@@ -148,6 +148,7 @@ nnoremap <Leader>e :set nu!<CR>
 nnoremap <Leader>r :set rnu!<CR>
 nnoremap <Leader>R :so ~/.vimrc<CR>
 nnoremap <Leader>t :GitGutterToggle<CR>
+nnoremap <Leader>y :ColorToggle<CR>
 
 " Second row - Editing
 nnoremap <Leader>a gg=G''
