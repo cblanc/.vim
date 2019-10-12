@@ -116,10 +116,12 @@ let g:ale_linters = {
 \ 'yaml': ['prettier'],
 \ 'ruby': ['ruby', 'rubocop'],
 \ 'eruby': ['prettier'],
+\ 'rust': ['rls'],
 \}
 
 " Fixer config
 let g:ale_fixers = {
+\ '*': ['remove_trailing_lines', 'trim_whitespace'],
 \ 'javascript': ['prettier'],
 \ 'typescript': ['prettier'],
 \ 'json': ['prettier'],
@@ -127,9 +129,10 @@ let g:ale_fixers = {
 \ 'yaml': ['prettier'],
 \ 'ruby': ['rubocop'],
 \ 'eruby': ['prettier'],
+\ 'rust': ['rustfmt'],
 \}
 " Only run fixer on above configurations
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 let g:ale_lint_on_save = 1
 
 "Attach lint information to airline
@@ -152,8 +155,18 @@ nnoremap <Leader>y :ColorToggle<CR>
 
 " Second row - Editing
 nnoremap <Leader>a gg=G''
-nnoremap <Leader>l :call RunNearestSpec()<CR>
-nnoremap <Leader>L :call RunCurrentSpecFile()<CR>
+nnoremap <Leader>f :ALELint<CR>
+nnoremap <Leader>F :ALEFix<CR>
+nnoremap <Leader>d :ALEHover<CR>
+nnoremap <Leader>D :ALEGoToDefinition<CR>
+
+" Rust
+autocmd FileType rust nmap <Leader>l :RustTest<CR>
+autocmd FileType rust nmap <Leader>L :RustTest!<CR>
+
+" Ruby
+autocmd FileType ruby nmap <Leader>l :call RunNearestSpec()<CR>
+autocmd FileType ruby nmap <Leader>L :call RunCurrentSpecFile()<CR>
 
 " Third row - git
 nnoremap <Leader>x :Gstatus<CR>
