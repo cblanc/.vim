@@ -31,6 +31,7 @@ plugins-init:
 	git submodule init
 	git submodule update --recursive --jobs=8
 	make compile-vimproc
+	make install-youcompleteme
 
 ## -- Misc --
 
@@ -38,6 +39,13 @@ plugins-init:
 .PHONY: compile-vimproc
 compile-vimproc:
 	cd "${CURDIR}/bundle/vimproc.vim" && make
+
+## Install YouCompleteMe
+## - Adds rust (rls) support by default
+## - Adds TypeScript (tsserver) support by default
+.PHONY: install-youcompleteme
+install-youcompleteme:
+	cd "${CURDIR}/bundle/YouCompleteMe" && python3 install.py --rust-completer --ts-completer
 
 ## Help message
 .PHONY: help
