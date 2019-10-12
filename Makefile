@@ -45,7 +45,9 @@ compile-vimproc:
 ## - Adds TypeScript (tsserver) support by default
 .PHONY: install-youcompleteme
 install-youcompleteme:
-	cd "${CURDIR}/bundle/YouCompleteMe" && python3 install.py --rust-completer --ts-completer
+	cd "${CURDIR}/bundle/YouCompleteMe" && \
+		git submodule update --init --recursive && \
+		python3 install.py --rust-completer --ts-completer
 
 ## Help message
 .PHONY: help
