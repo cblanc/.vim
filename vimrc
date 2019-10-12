@@ -81,7 +81,7 @@ let g:javascript_plugin_jsdoc = 1 " Enables Syntax highlighting for JsDocs
 " NerdTree
 map <C-o> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
-let NERDTreeIgnore = ['.DS_Store', '^.git$', '^node_modules$', '.nyc_output$', '.cache$', 'docs$', 'coverage$', 'dist$', '.capistrano$', 'target$']
+let NERDTreeIgnore = ['.DS_Store', '^.git$', '^node_modules$', '.nyc_output$', '.cache$', 'docs$', 'coverage$', 'dist$', '.capistrano$', 'target$', 'undodir$']
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
@@ -89,7 +89,7 @@ let NERDTreeDirArrows = 1
 set updatetime=500
 
 " CtrlP
-let g:ctrlp_custom_ignore = 'node_modules/\|\.DS_Store\|\.git/\|\.?tmp/\|.nyc_output/\|.cache/\|dist/\|docs/\|coverage/\|target/'
+let g:ctrlp_custom_ignore = 'node_modules/\|\.DS_Store\|\.git/\|\.?tmp/\|.nyc_output/\|.cache/\|dist/\|docs/\|coverage/\|target/\|undodir/'
 let g:ctrlp_show_hidden = 1
 
 " Use ag with ack.vim
