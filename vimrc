@@ -1,4 +1,5 @@
 
+
 execute pathogen#infect()
 syntax on
 set nocompatible
@@ -130,6 +131,7 @@ let g:ale_fixers = {
 \ 'ruby': ['rubocop'],
 \ 'eruby': ['prettier'],
 \ 'rust': ['rustfmt'],
+\ 'html': ['prettier'],
 \}
 " Only run fixer on above configurations
 let g:ale_fix_on_save = 0
