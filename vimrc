@@ -134,7 +134,7 @@ let g:ale_fixers = {
 \ 'html': ['prettier'],
 \}
 " Only run fixer on above configurations
-let g:ale_fix_on_save = 0
+let g:ale_fix_on_save = 1
 let g:ale_lint_on_save = 1
 
 "Attach lint information to airline
