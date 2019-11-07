@@ -81,7 +81,7 @@
 	url = https://github.com/thoughtbot/vim-rspec.git
 [submodule "bundle/colorizer"]
 	path = bundle/colorizer
-	url = git@github.com:chrisbra/Colorizer.git
+	url = https://github.com/chrisbra/Colorizer.git
 [submodule "bundle/rust.vim"]
 	path = bundle/rust.vim
 	url = https://github.com/rust-lang/rust.vim.git
