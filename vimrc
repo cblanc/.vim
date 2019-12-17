@@ -12,10 +12,7 @@ set tabstop=2
 set shiftwidth=2
 set autoindent
 set autoread
-set ruler
 set laststatus=2
-set cursorline
-set cursorcolumn
 set winwidth=79
 set cmdheight=2
 set lazyredraw
