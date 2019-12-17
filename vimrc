@@ -1,5 +1,3 @@
-
-
 execute pathogen#infect()
 syntax on
 set nocompatible
@@ -14,7 +12,7 @@ set autoindent
 set autoread
 set laststatus=2
 set winwidth=79
-set cmdheight=2
+set cmdheight=1
 set lazyredraw
 set ttyfast
 set nobackup
