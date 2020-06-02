@@ -77,7 +77,7 @@ let g:javascript_plugin_jsdoc = 1 " Enables Syntax highlighting for JsDocs
 " NerdTree
 map <C-o> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
-let NERDTreeIgnore = ['.DS_Store', '^.git$', '^node_modules$', '.nyc_output$', '.cache$', 'docs$', 'coverage$', 'dist$', '.capistrano$', 'target$', 'undodir$']
+let NERDTreeIgnore = ['.DS_Store', '^.git$', '^node_modules$', '.nyc_output$', '.cache$', 'docs$', 'coverage$', '.capistrano$', 'target$', 'undodir$']
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
