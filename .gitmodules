@@ -61,21 +61,6 @@
 [submodule "bundle/nginx.vim"]
 	path = bundle/nginx.vim
 	url = https://github.com/chr4/nginx.vim
-[submodule "bundle/limelight"]
-	path = bundle/limelight
-	url = https://github.com/junegunn/limelight.vim.git
-[submodule "bundle/goyo"]
-	path = bundle/goyo
-	url = https://github.com/junegunn/goyo.vim.git
-[submodule "bundle/vim-rspec"]
-	path = bundle/vim-rspec
-	url = https://github.com/thoughtbot/vim-rspec.git
-[submodule "bundle/colorizer"]
-	path = bundle/colorizer
-	url = https://github.com/chrisbra/Colorizer.git
-[submodule "bundle/rust.vim"]
-	path = bundle/rust.vim
-	url = https://github.com/rust-lang/rust.vim.git
 [submodule "bundle/YouCompleteMe"]
 	path = bundle/YouCompleteMe
 	url = https://github.com/ycm-core/YouCompleteMe.git
