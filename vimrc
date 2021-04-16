@@ -131,6 +131,7 @@ let g:ale_fixers = {
 \ 'eruby': ['prettier'],
 \ 'rust': ['rustfmt'],
 \ 'html': ['prettier'],
+\ 'markdown': ['prettier'],
 \}
 " Only run fixer on above configurations
 let g:ale_fix_on_save = 1
@@ -146,8 +147,6 @@ set completeopt=longest,menuone
 set omnifunc=tsuquyomi#complete
 
 " First row - View
-nnoremap <Leader>q :Goyo<CR>
-nnoremap <Leader>w :Limelight!!<CR>
 nnoremap <Leader>e :set nu!<CR>
 nnoremap <Leader>r :set rnu!<CR>
 nnoremap <Leader>R :so ~/.vimrc<CR>
