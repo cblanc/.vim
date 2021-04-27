@@ -77,7 +77,7 @@ let g:javascript_plugin_jsdoc = 1 " Enables Syntax highlighting for JsDocs
 " NerdTree
 map <C-o> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
-let NERDTreeIgnore = ['.DS_Store', '^.git$', '^node_modules$', '.nyc_output$', '.cache$', 'docs$', 'coverage$', '.capistrano$', 'target$', 'undodir$']
+let NERDTreeIgnore = ['.DS_Store', '^.git$', '^node_modules$', '.nyc_output$', '.cache$', 'docs$', 'coverage$', '.capistrano$', 'target$', 'undodir$', '.next$']
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
@@ -85,7 +85,7 @@ let NERDTreeDirArrows = 1
 set updatetime=500
 
 " CtrlP
-let g:ctrlp_custom_ignore = 'node_modules/\|\.DS_Store\|\.git/\|\.?tmp/\|.nyc_output/\|.cache/\|dist/\|docs/\|coverage/\|target/\|undodir/'
+let g:ctrlp_custom_ignore = 'node_modules/\|\.DS_Store\|\.git/\|\.?tmp/\|.nyc_output/\|.cache/\|dist/\|docs/\|coverage/\|target/\|\.next/\|undodir/'
 let g:ctrlp_show_hidden = 1
 
 " Use ag with ack.vim
@@ -107,6 +107,7 @@ set undodir=~/.vim/undodir
 let g:ale_linters = {
 \ 'javascript': ['prettier'],
 \ 'typescript': ['tslint'],
+\ 'typescriptreact': ['prettier'],
 \ 'json': ['prettier'],
 \ 'css': ['prettier'],
 \ 'scss': ['prettier'],
@@ -122,12 +123,13 @@ let g:ale_fixers = {
 \ '*': ['remove_trailing_lines', 'trim_whitespace'],
 \ 'javascript': ['prettier'],
 \ 'typescript': ['prettier'],
+\ 'typescriptreact': ['prettier'],
 \ 'json': ['prettier'],
 \ 'css': ['prettier'],
 \ 'scss': ['prettier'],
 \ 'php': ['prettier'],
 \ 'yaml': ['prettier'],
-\ 'ruby': ['rubocop'],
+\ 'ruby': ['prettier'],
 \ 'eruby': ['prettier'],
 \ 'rust': ['rustfmt'],
 \ 'html': ['prettier'],
@@ -136,6 +138,7 @@ let g:ale_fixers = {
 " Only run fixer on above configurations
 let g:ale_fix_on_save = 1
 let g:ale_lint_on_save = 1
+let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
 
 "Attach lint information to airline
 let g:airline#extensions#ale#enabled = 1
