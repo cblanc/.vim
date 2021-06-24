@@ -32,4 +32,3 @@ Following links need to exist
 # Symlink neovims init file to vimrc
 ~/.vim/init.vim -> ~/vimrc
 ```
-
