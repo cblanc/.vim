@@ -31,7 +31,16 @@ plugins-init:
 	git submodule init
 	git submodule update --recursive --jobs=8
 	make compile-vimproc
-	make install-youcompleteme
+
+# Install language servers
+.PHONY: ls-init
+ls-init:
+	npm i -g vscode-langservers-extracted
+	npm install -g yaml-language-server
+	npm install -g typescript typescript-language-server
+	npm install -g dockerfile-language-server-nodejs
+	npm install -g diagnostic-languageserver
+	npm i -g eslint_d prettier
 
 ## -- Misc --
 
@@ -40,14 +49,6 @@ plugins-init:
 compile-vimproc:
 	cd "${CURDIR}/bundle/vimproc.vim" && make
 
-## Install YouCompleteMe
-## - Adds rust (rls) support by default
-## - Adds TypeScript (tsserver) support by default
-.PHONY: install-youcompleteme
-install-youcompleteme:
-	cd "${CURDIR}/bundle/YouCompleteMe" && \
-		git submodule update --init --recursive && \
-		python3 install.py --ts-completer
 
 ## Help message
 .PHONY: help
