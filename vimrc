@@ -1,3 +1,4 @@
+
 syntax on
 set nocompatible
 filetype plugin indent on
@@ -51,6 +52,10 @@ set backspace=indent,eol,start
 :color monokai
 :set background=dark
 
+" Creates a persistent undofile
+set undofile
+set undodir=~/.vim/undodir
+
 " :set background=light
 " color PaperColor
 
@@ -69,6 +74,29 @@ inoremap <s-tab> <c-n>
 
 " STATUS LINE
 :set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
+
+" Plugin Setup Starts here
+call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
+Plug 'scrooloose/nerdtree'
+Plug 'airblade/vim-gitgutter'
+Plug 'pangloss/vim-javascript'
+Plug 'tpope/vim-surround'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'leafgarland/typescript-vim'
+Plug 'mattn/emmet-vim'
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+Plug 'mxw/vim-jsx'
+Plug 'heavenshell/vim-jsdoc'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-endwise'
+Plug 'Shougo/vimproc.vim'
+Plug 'chr4/nginx'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'hashivim/vim-terraform'
+call plug#end()
 
 " vim-javascript
 let g:javascript_plugin_jsdoc = 1 " Enables Syntax highlighting for JsDocs
@@ -93,60 +121,6 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 " Config for VIM JsDoc
 " https://github.com/heavenshell/vim-jsdoc
 let g:jsdoc_enable_es6=1
-let g:jsdoc_underscore_private=1
-" Map jsdoc to ctrl-m
-nmap <silent> <C-m> <Plug>(jsdoc)
-
-" Creates a persistent undofile
-set undofile
-set undodir=~/.vim/undodir
-
-" Ale configuration
-" Linter config
-let g:ale_linters = {
-\ 'javascript': ['prettier'],
-\ 'typescript': ['tslint'],
-\ 'typescriptreact': ['prettier'],
-\ 'json': ['prettier'],
-\ 'css': ['prettier'],
-\ 'scss': ['prettier'],
-\ 'yaml': ['prettier'],
-\ 'php': ['prettier'],
-\ 'ruby': ['ruby', 'rubocop'],
-\ 'eruby': ['prettier'],
-\ 'rust': ['rls'],
-\}
-
-" Fixer config
-let g:ale_fixers = {
-\ '*': ['remove_trailing_lines', 'trim_whitespace'],
-\ 'javascript': ['prettier'],
-\ 'typescript': ['prettier'],
-\ 'typescriptreact': ['prettier'],
-\ 'json': ['prettier'],
-\ 'css': ['prettier'],
-\ 'scss': ['prettier'],
-\ 'php': ['prettier'],
-\ 'yaml': ['prettier'],
-\ 'ruby': ['prettier'],
-\ 'eruby': ['prettier'],
-\ 'rust': ['rustfmt'],
-\ 'html': ['prettier'],
-\ 'markdown': ['prettier'],
-\}
-" Only run fixer on above configurations
-let g:ale_fix_on_save = 1
-let g:ale_lint_on_save = 1
-let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
-
-"Attach lint information to airline
-let g:airline#extensions#ale#enabled = 1
-
-" Tsuquyomi (typescript completion) config
-let g:tsuquyomi_completion_detail = 1
-let g:tsuquyomi_definition_split = 1
-set completeopt=longest,menuone
-set omnifunc=tsuquyomi#complete
 
 " First row - View
 nnoremap <Leader>e :set nu!<CR>
@@ -161,14 +135,6 @@ nnoremap <Leader>f :ALELint<CR>
 nnoremap <Leader>F :ALEFix<CR>
 nnoremap <Leader>d :ALEHover<CR>
 nnoremap <Leader>D :ALEGoToDefinition<CR>
-
-" Rust
-autocmd FileType rust nmap <Leader>l :RustTest<CR>
-autocmd FileType rust nmap <Leader>L :RustTest!<CR>
-
-" Ruby
-autocmd FileType ruby nmap <Leader>l :call RunNearestSpec()<CR>
-autocmd FileType ruby nmap <Leader>L :call RunCurrentSpecFile()<CR>
 
 " Third row - git
 nnoremap <Leader>x :Gstatus<CR>
