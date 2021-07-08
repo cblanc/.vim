@@ -1,3 +1,4 @@
+let mapleader=","
 
 syntax on
 set nocompatible
@@ -48,9 +49,6 @@ set backspace=indent,eol,start
 
 " Colours
 :set t_Co=256 " 256 colors
-
-:color monokai
-:set background=dark
 
 " Creates a persistent undofile
 set undofile
@@ -103,9 +101,15 @@ if has("nvim")
   Plug 'glepnir/lspsaga.nvim'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-lua/completion-nvim'
+  Plug 'tanvirtin/monokai.nvim'
+else
+  Plug 'crusoexia/vim-monokai'
 endif
 
 call plug#end()
+
+set termguicolors
+colorscheme monokai
 
 " vim-javascript
 let g:javascript_plugin_jsdoc = 1 " Enables Syntax highlighting for JsDocs
@@ -134,16 +138,8 @@ let g:jsdoc_enable_es6=1
 " First row - View
 nnoremap <Leader>e :set nu!<CR>
 nnoremap <Leader>r :set rnu!<CR>
-nnoremap <Leader>R :so ~/.vimrc<CR>
-nnoremap <Leader>t :GitGutterToggle<CR>
-nnoremap <Leader>y :ColorToggle<CR>
 
 " Second row - Editing
-nnoremap <Leader>a gg=G''
-nnoremap <Leader>f :ALELint<CR>
-nnoremap <Leader>F :ALEFix<CR>
-nnoremap <Leader>d :ALEHover<CR>
-nnoremap <Leader>D :ALEGoToDefinition<CR>
 
 " Third row - git
 nnoremap <Leader>x :Gstatus<CR>
@@ -243,11 +239,6 @@ nvim_lsp.diagnosticls.setup {
       typescriptreact = 'eslint',
     },
     formatters = {
-      eslint_d = {
-        command = 'eslint_d',
-        args = { '--stdin', '--stdin-filename', '%filename', '--fix-to-stdout' },
-        rootPatterns = { '.git' },
-      },
       prettier = {
         command = 'prettier',
         args = { '--stdin-filepath', '%filename' }
@@ -255,13 +246,13 @@ nvim_lsp.diagnosticls.setup {
     },
     formatFiletypes = {
       css = 'prettier',
-      javascript = 'eslint_d',
-      javascriptreact = 'eslint_d',
+      javascript = 'prettier',
+      javascriptreact = 'prettier',
       json = 'prettier',
       scss = 'prettier',
       less = 'prettier',
-      typescript = 'eslint_d',
-      typescriptreact = 'eslint_d',
+      typescript = 'prettier',
+      typescriptreact = 'prettier',
       json = 'prettier',
       markdown = 'prettier',
     }
@@ -313,3 +304,10 @@ set completeopt=menuone,noinsert,noselect
 
 " Avoid showing message extra message when using completion
 set shortmess+=c
+
+" lsp-saga config
+" lsp provider to find the cursor word definition and reference
+nnoremap <silent> gh <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>
+" code action
+nnoremap <silent><leader>ca <cmd>lua require('lspsaga.codeaction').code_action()<CR>
+vnoremap <silent><leader>ca :<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>
