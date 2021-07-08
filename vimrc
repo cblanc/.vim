@@ -1,6 +1,3 @@
-let mapleader=","
-
-syntax on
 set nocompatible
 filetype plugin indent on
 
@@ -47,15 +44,9 @@ set tm=500
 " Backspace everything
 set backspace=indent,eol,start
 
-" Colours
-:set t_Co=256 " 256 colors
-
 " Creates a persistent undofile
 set undofile
 set undodir=~/.vim/undodir
-
-" :set background=light
-" color PaperColor
 
 " MULTIPURPOSE TAB KEY
 " Indent if we're at the beginning of a line. Else, do completion.
@@ -102,14 +93,19 @@ if has("nvim")
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-lua/completion-nvim'
   Plug 'tanvirtin/monokai.nvim'
-else
-  Plug 'crusoexia/vim-monokai'
+  Plug 'sainnhe/sonokai'
+  Plug 'morhetz/gruvbox'
 endif
 
 call plug#end()
 
-set termguicolors
-colorscheme monokai
+syntax on
+set background=dark
+colorscheme sonokai
+if has('termguicolors')
+  set termguicolors
+endif
+let g:sonokai_style = 'andromeda'
 
 " vim-javascript
 let g:javascript_plugin_jsdoc = 1 " Enables Syntax highlighting for JsDocs
@@ -311,3 +307,5 @@ nnoremap <silent> gh <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>
 " code action
 nnoremap <silent><leader>ca <cmd>lua require('lspsaga.codeaction').code_action()<CR>
 vnoremap <silent><leader>ca :<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>
+
+let mapleader=","
