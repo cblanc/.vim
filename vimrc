@@ -100,12 +100,12 @@ endif
 call plug#end()
 
 syntax on
-set background=dark
+" set background=dark
 colorscheme sonokai
-if has('termguicolors')
-  set termguicolors
-endif
-let g:sonokai_style = 'andromeda'
+" if has('termguicolors')
+"   set termguicolors
+" endif
+" let g:sonokai_style = 'andromeda'
 
 " vim-javascript
 let g:javascript_plugin_jsdoc = 1 " Enables Syntax highlighting for JsDocs
