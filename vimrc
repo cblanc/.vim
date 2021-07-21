@@ -150,9 +150,6 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
     vim.api.nvim_command [[augroup END]]
   end
-
-  -- Enable code completion
-  require'completion'.on_attach(client, bufnr)
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
