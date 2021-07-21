@@ -70,28 +70,16 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
 Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
-Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
-Plug 'leafgarland/typescript-vim'
-Plug 'mattn/emmet-vim'
-Plug 'tpope/vim-markdown'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
-Plug 'mxw/vim-jsx'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-endwise'
-Plug 'Shougo/vimproc.vim'
-Plug 'chr4/nginx'
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'hashivim/vim-terraform'
 
 if has("nvim")
   Plug 'neovim/nvim-lspconfig'
-  Plug 'glepnir/lspsaga.nvim'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  Plug 'nvim-lua/completion-nvim'
+  Plug 'glepnir/lspsaga.nvim'
+  Plug 'hrsh7th/nvim-compe'
   Plug 'tanvirtin/monokai.nvim'
   Plug 'sainnhe/sonokai'
   Plug 'morhetz/gruvbox'
@@ -99,16 +87,10 @@ endif
 
 call plug#end()
 
+" Colors
 syntax on
-" set background=dark
-colorscheme sonokai
-" if has('termguicolors')
-"   set termguicolors
-" endif
-let g:sonokai_style = 'andromeda'
-
-" vim-javascript
-let g:javascript_plugin_jsdoc = 1 " Enables Syntax highlighting for JsDocs
+colorscheme monokai
+set termguicolors
 
 " NerdTree
 map <C-o> :NERDTreeToggle<CR>
@@ -126,26 +108,6 @@ let g:ctrlp_show_hidden = 1
 
 " Use ag with ack.vim
 let g:ackprg = 'ag --nogroup --nocolor --column'
-
-" Config for VIM JsDoc
-" https://github.com/heavenshell/vim-jsdoc
-let g:jsdoc_enable_es6=1
-
-" First row - View
-nnoremap <Leader>e :set nu!<CR>
-nnoremap <Leader>r :set rnu!<CR>
-
-" Second row - Editing
-
-" Third row - git
-nnoremap <Leader>x :Gstatus<CR>
-nnoremap <Leader>c :Gcommit<CR>
-nnoremap <Leader>C :Git add --all<CR>
-nnoremap <Leader>v :Gvsplit<CR>
-nnoremap <Leader>n :Git rebase HEAD~10 -i<CR>
-
-" NerdCommenter
-filetype plugin on
 
 if has("nvim")
 lua << EOF
@@ -168,9 +130,9 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  -- buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  -- buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  -- buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
@@ -258,9 +220,6 @@ nvim_lsp.diagnosticls.setup {
   }
 }
 
-local saga = require 'lspsaga'
-saga.init_lsp_saga()
-
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
@@ -290,19 +249,38 @@ require'nvim-treesitter.configs'.setup {
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 parser_config.tsx.used_by = { "javascript", "typescript.tsx" }
 
+local saga = require 'lspsaga'
+saga.init_lsp_saga()
+
 EOF
 endif
 
-" Configure Autocomplete on Neovim
-" Use <Tab> and <S-Tab> to navigate through popup menu
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" Set completeopt to have a better completion experience
-set completeopt=menuone,noinsert,noselect
-
-" Avoid showing message extra message when using completion
-set shortmess+=c
+" nvim-compe
+set completeopt=menuone,noselect
+let g:compe = {}
+let g:compe.enabled = v:true
+let g:compe.autocomplete = v:true
+let g:compe.debug = v:false
+let g:compe.min_length = 1
+let g:compe.preselect = 'enable'
+let g:compe.throttle_time = 80
+let g:compe.source_timeout = 200
+let g:compe.resolve_timeout = 800
+let g:compe.incomplete_delay = 400
+let g:compe.max_abbr_width = 100
+let g:compe.max_kind_width = 100
+let g:compe.max_menu_width = 100
+let g:compe.documentation = v:true
+let g:compe.source = {}
+let g:compe.source.path = v:true
+let g:compe.source.buffer = v:true
+let g:compe.source.calc = v:true
+let g:compe.source.nvim_lsp = v:true
+let g:compe.source.nvim_lua = v:true
+let g:compe.source.vsnip = v:true
+let g:compe.source.ultisnips = v:true
+let g:compe.source.luasnip = v:true
+let g:compe.source.emoji = v:true
 
 " lsp-saga config
 " lsp provider to find the cursor word definition and reference
