@@ -1,3 +1,4 @@
+let mapleader=","
 set nocompatible
 filetype plugin indent on
 
@@ -72,14 +73,13 @@ Plug 'airblade/vim-gitgutter'
 Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'scrooloose/nerdcommenter'
+Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 Plug 'leafgarland/typescript-vim'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'mxw/vim-jsx'
-Plug 'heavenshell/vim-jsdoc'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-endwise'
 Plug 'Shougo/vimproc.vim'
@@ -105,7 +105,7 @@ colorscheme sonokai
 " if has('termguicolors')
 "   set termguicolors
 " endif
-" let g:sonokai_style = 'andromeda'
+let g:sonokai_style = 'andromeda'
 
 " vim-javascript
 let g:javascript_plugin_jsdoc = 1 " Enables Syntax highlighting for JsDocs
@@ -143,6 +143,9 @@ nnoremap <Leader>c :Gcommit<CR>
 nnoremap <Leader>C :Git add --all<CR>
 nnoremap <Leader>v :Gvsplit<CR>
 nnoremap <Leader>n :Git rebase HEAD~10 -i<CR>
+
+" NerdCommenter
+filetype plugin on
 
 if has("nvim")
 lua << EOF
@@ -308,4 +311,3 @@ nnoremap <silent> gh <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>
 nnoremap <silent><leader>ca <cmd>lua require('lspsaga.codeaction').code_action()<CR>
 vnoremap <silent><leader>ca :<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>
 
-let mapleader=","
