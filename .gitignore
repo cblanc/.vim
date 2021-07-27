@@ -5,3 +5,5 @@ init.vim
 nvim
 undodir
 plugged
+nvim-plugged
+vim-plugged

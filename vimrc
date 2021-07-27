@@ -66,7 +66,7 @@ inoremap <s-tab> <c-n>
 :set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 
 " Plugin Setup Starts here
-call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
+call plug#begin(has('nvim') ? '~/.vim/nvim-plugged' : '~/.vim/plugged')
 
 Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
@@ -89,7 +89,7 @@ call plug#end()
 
 " Colors
 syntax on
-colorscheme monokai
+colorscheme monokai_pro
 set termguicolors
 
 " NerdTree
