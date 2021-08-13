@@ -154,7 +154,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { "tsserver", "terraformls", "cmake", "yamlls", "dockerls", "bashls", "jsonls", "solargraph" }
+local servers = { "tsserver", "terraformls", "cmake", "yamlls", "dockerls", "bashls", "jsonls" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -163,6 +163,22 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
+
+nvim_lsp.solargraph.setup {
+  cmd = { "solargraph", "stdio" },
+  filetypes = { "ruby" },
+  flags = { debounce_text_changes = 150, },
+  on_attach = on_attach,
+  handlers = {
+    ["textDocument/publishDiagnostics"] = vim.lsp.with(
+      vim.lsp.diagnostic.on_publish_diagnostics, {
+        -- Disable virtual_text on file load
+        -- Show with vim.lsp.diagnostic.show_line_diagnostics()
+        virtual_text = false
+      }
+    ),
+  },
+}
 
 nvim_lsp.diagnosticls.setup {
   on_attach = on_attach,
