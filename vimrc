@@ -74,11 +74,17 @@ Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
+Plug 'github/copilot.vim'
+Plug 'pantharshit00/vim-prisma'
+Plug 'heavenshell/vim-jsdoc', {
+  \ 'for': ['javascript', 'javascript.jsx','typescript']
+\}
+
 
 if has("nvim")
   Plug 'neovim/nvim-lspconfig'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  Plug 'glepnir/lspsaga.nvim'
+  Plug 'tami5/lspsaga.nvim'
   Plug 'hrsh7th/nvim-compe'
   Plug 'tanvirtin/monokai.nvim'
   Plug 'sainnhe/sonokai'
@@ -222,11 +228,13 @@ nvim_lsp.diagnosticls.setup {
       css = 'prettier',
       javascript = 'prettier',
       javascriptreact = 'prettier',
-      json = 'prettier',
       scss = 'prettier',
+      yaml = 'prettier',
       less = 'prettier',
       typescript = 'prettier',
       typescriptreact = 'prettier',
+      html = 'prettier',
+      eruby = 'prettier',
       json = 'prettier',
       markdown = 'prettier',
     }
@@ -302,3 +310,5 @@ nnoremap <silent> gh <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>
 nnoremap <silent><leader>ca <cmd>lua require('lspsaga.codeaction').code_action()<CR>
 vnoremap <silent><leader>ca :<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>
 
+" vim-jsdoc config
+let g:jsdoc_formatter = 'tsdoc'
