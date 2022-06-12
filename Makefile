@@ -19,19 +19,6 @@ update:
 
 ## -- Plugin Methods --
 
-## Update vim plugins
-.PHONY: plugins-update
-plugins-update: ## Git pulls over every submodule in bundle
-	git submodule foreach git pull --recurse-submodules origin master
-	make compile-vimproc
-
-## Download vim plugins
-.PHONY: plugins-init
-plugins-init:
-	git submodule init
-	git submodule update --recursive --jobs=8
-	make compile-vimproc
-
 # Install language servers
 .PHONY: ls-init
 ls-init:
@@ -43,12 +30,6 @@ ls-init:
 	npm i -g eslint_d prettier
 
 ## -- Misc --
-
-## Compile bundle/vimproc.vim
-.PHONY: compile-vimproc
-compile-vimproc:
-	cd "${CURDIR}/bundle/vimproc.vim" && make
-
 
 ## Help message
 .PHONY: help
