@@ -9,7 +9,6 @@ init: ## Sets up symlink for user and root .vimrc for vim and neovim.
 	mkdir -p "$(HOME_CONFIG)"
 	ln -snf "$(HOME)/.vim" "$(HOME_CONFIG)/nvim"
 	ln -snf "$(HOME)/.vimrc" "$(HOME_CONFIG)/nvim/init.vim"
-	make plugins-init
 
 ## Updates .vim settings and plugins from cblanc/.vim
 .PHONY: update
