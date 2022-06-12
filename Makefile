@@ -18,7 +18,7 @@ update:
 
 ## -- Plugin Methods --
 
-# Install language servers
+## Install language servers
 .PHONY: ls-init
 ls-init:
 	npm i -g vscode-langservers-extracted
