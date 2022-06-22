@@ -94,6 +94,7 @@ if has("nvim")
   Plug 'saadparwaiz1/cmp_luasnip'
   Plug 'hrsh7th/cmp-cmdline'
   Plug 'hrsh7th/cmp-path'
+  Plug 'https://github.com/github/copilot.vim.git'
   Plug 'zbirenbaum/copilot-cmp'
 
   Plug 'tanvirtin/monokai.nvim'
@@ -130,7 +131,7 @@ require('monokai').setup {}
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
       ['<C-Space>'] = cmp.mapping.complete(),
       ['<C-e>'] = cmp.mapping.abort(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+      ['<S-CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
@@ -140,6 +141,7 @@ require('monokai').setup {}
       -- { name = 'snippy' }, -- For snippy users.
     }, {
       { name = 'buffer' },
+      { name = 'copilot' },
     })
   })
 
@@ -205,7 +207,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+  vim.keymap.set('n', '<space>f', vim.lsp.buf.format, bufopts)
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
