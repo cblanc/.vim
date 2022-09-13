@@ -338,7 +338,7 @@ colorscheme monokai_pro
 set termguicolors
 
 " NerdTree
-map <C-o> :NERDTreeToggle<CR>
+map <C-t> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['.DS_Store', '^.git$', '^node_modules$', '.nyc_output$', '.cache$', 'docs$', 'coverage$', '.capistrano$', 'target$', 'undodir$', '.next$']
 let NERDTreeMinimalUI = 1
