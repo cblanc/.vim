@@ -1,4 +1,4 @@
-let mapleader=","
+let mapleader=";"
 set nocompatible
 filetype plugin indent on
 
@@ -82,9 +82,13 @@ if has("nvim")
   " Easy LSP configs
   Plug 'neovim/nvim-lspconfig'
 
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'MunifTanjim/nui.nvim'
+  Plug 'dpayne/CodeGPT.nvim'
+
   " Treesitter
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  
+
   Plug 'L3MON4D3/LuaSnip'
 
   " Configure nvim-cmp
@@ -96,7 +100,6 @@ if has("nvim")
   Plug 'hrsh7th/cmp-path'
   Plug 'https://github.com/github/copilot.vim.git'
   Plug 'zbirenbaum/copilot-cmp'
-
   Plug 'tanvirtin/monokai.nvim'
 endif
 
@@ -104,7 +107,6 @@ call plug#end()
 
 " Start nvim specific config =====================
 if has("nvim")
-
 lua << EOF
 
 require('monokai').setup {}
@@ -326,6 +328,16 @@ require'nvim-treesitter.configs'.setup {
 }
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 parser_config.tsx.filetype_to_parsername = { "javascript", "typescript.tsx" }
+
+-- OpenAI
+-- vim.keymap.set('n', '<space>f', vim.lsp.buf.format, bufopts)
+vim.keymap.set('n', '<leader>c', ':Chat ')
+vim.keymap.set('v', '<leader>c', ':Chat ')
+vim.keymap.set('v', '<leader>q', ':Chat chat ')
+vim.keymap.set('v', '<leader>d', ':Chat doc<CR>')
+vim.keymap.set('v', '<leader>t', ':Chat tests<CR>')
+vim.keymap.set('v', '<leader>o', ':Chat opt<CR>')
+vim.keymap.set('v', '<leader>e', ':Chat explain<CR>')
 
 EOF
 endif
